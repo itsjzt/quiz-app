@@ -1,26 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Welcome from './Welcome'
+import Question from './Question'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [view, setView] = useState('welcome')
+  const [questionId, setQuestionId] = useState(0)
+
+  return view === 'welcome'
+  ? <Welcome setView={setView} />
+  : <Question questionId={questionId} setView={setView} setQuestionId={setQuestionId} />
 }
 
 export default App;
